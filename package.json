@@ -6,6 +6,8 @@
   "scripts": {
     "start": "cd server && node ./index",
     "dev": "cd server && nodemon ./index",
+    "heroku-postbuild": "cd client && npm install && npm run build",
+    "postinstall": "cd client && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
