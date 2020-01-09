@@ -29,12 +29,12 @@ app.use(session({
 app.use('/api', controllers);
 
 // serve static files
-app.use(express.static(path.join(__dirname, '..', 'client', 'dist', 'client')));
-app.use(favicon(path.join(__dirname, '..', 'client', 'dist', 'client', 'favicon.ico')));
+app.use(express.static(path.join(__dirname, '..', 'dist', 'client')));
+app.use(favicon(path.join(__dirname, '..', 'dist', 'client', 'favicon.ico')));
 
 //  handle all requests
 app.get('*', (_req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'client', 'dist', 'client', 'index.html'));
+  res.sendFile(path.join(__dirname, '..', 'dist', 'client', 'index.html'));
 });
 
 // error handler

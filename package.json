@@ -6,8 +6,6 @@
   "scripts": {
     "start": "cd server && node ./index",
     "dev": "cd server && nodemon ./index",
-    "heroku-postbuild": "cd client && npm install && npm run build",
-    "postinstall": "cd client && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
@@ -37,7 +35,7 @@
     "oauth": "^0.9.15",
     "twit": "^2.2.11",
     "twitter": "^1.7.1",
-	"node-sass": "^4.0.0"
+    "node-sass": "^4.0.0"
   },
   "devDependencies": {
     "cross-env": "^6.0.3",
@@ -46,7 +44,7 @@
     "eslint-plugin-import": "^2.19.1",
     "json2csv": "^4.5.4",
     "nodemon": "^2.0.2",
-	"node-sass": "^4.0.0"
+    "node-sass": "^4.0.0"
   },
   "engines": {
     "node": "10.15.1",

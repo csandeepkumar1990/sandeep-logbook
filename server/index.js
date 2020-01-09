@@ -11,8 +11,8 @@ const dbConnection = require('./database/db_connection');
  * Get port from environment and store in Express.
  */
 
-//const port = process.env.PORT || '5000';
-const port = '8080';
+const port = process.env.PORT || '5000';
+// const port = '8081';
 app.set('port', port);
 
 /**
