@@ -45,5 +45,9 @@
     "eslint-plugin-import": "^2.19.1",
     "json2csv": "^4.5.4",
     "nodemon": "^2.0.2"
+  },
+  "engines": {
+    "node": "6.11.0",
+    "npm": "3.10.10"
   }
 }
