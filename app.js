@@ -6,9 +6,9 @@ const logger = require('morgan');
 const favicon = require('express-favicon');
 
 // load .env only on development
-if (!process.env.TRAVIS && !process.env.NODE_ENV !== 'production') {
-  require('dotenv').config();
-}
+// if (!process.env.TRAVIS && !process.env.NODE_ENV !== 'production') {
+//   require('dotenv').config();
+// }
 
 const controllers = require('./controllers');
 const errorHandler = require('./errors/error_handler');
@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({
-  secret: process.env.SECRET,
+  secret: 'rasha_project_secret',
   // cookie: { maxAge: 60000 },
   resave: false,
   saveUninitialized: false,

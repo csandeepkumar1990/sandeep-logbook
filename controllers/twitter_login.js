@@ -4,13 +4,13 @@ const User = require('../database/models/user');
 const { login, home } = require('./redirect_values');
 
 
-const cbUrl = process.env.TWITTER_LOGIN_CB;
+const cbUrl = 'http://localhost:5000/api/twitter/cb';
 
 const consumer = new OAuth.OAuth(
   'https://twitter.com/oauth/request_token',
   'https://twitter.com/oauth/access_token',
-  process.env.TWITTER_CONSUMER_KEY,
-  process.env.TWITTER_CONSUMER_SECRET,
+  'XIiQOpkCRMmNxfWQy1ADqpGhO',
+  'fRWeh73rRigsEn98ElqyeDyeOR0P9iD2MIKBc2xxtHD0ZjF6Wh',
   '1.0A',
   cbUrl,
   'HMAC-SHA1',
