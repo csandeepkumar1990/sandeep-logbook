@@ -1,0 +1,205 @@
+@import "../../../node_modules/compass-mixins/lib/compass/css3";
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin animation($name, $params) {
+  -webkit-animation: #{$name} $params; /* Safari 4+ */
+  -moz-animation: #{$name} $params; /* Fx 5+ */
+  -o-animation: #{$name} $params; /* Opera 12+ */
+  animation: #{$name} $params; /* IE 10+ */
+}
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300);
+
+$color-background: white;
+
+@include keyframes(dashoffset) {
+  0% {
+    stroke-dashoffset: 0px;
+  }
+
+  100% {
+    stroke-dashoffset: -20px;
+  }
+}
+
+@include keyframes(pulse) {
+  0% {
+    stroke-dashoffset: 0px;
+  }
+
+  100% {
+    stroke-dashoffset: -1000px;
+  }
+}
+
+@include keyframes(bouncing-stroke) {
+  0% {
+    stroke-width: 10px;
+  }
+
+  50% {
+    stroke-width: 15px;
+  }
+
+  100% {
+    stroke-width: 10px;
+  }
+}
+
+@include keyframes(exploding-stroke) {
+  0% {
+    stroke-width: 2px;
+    opacity: 1;
+  }
+
+  100% {
+    stroke-width: 40px;
+    opacity: 0;
+  }
+}
+
+@include keyframes(teeter) {
+  0% {
+    @include transform(perspective(500px) rotateX(-1deg) rotateY(-4deg) rotateZ(0deg));
+  }
+  
+  25% {
+    @include transform(perspective(500px) rotateX(1deg) rotateY(2deg) rotateZ(0deg));
+  }
+
+  50% {
+    @include transform(perspective(500px) rotateX(3deg) rotateY(4deg) rotateZ(0deg));
+  }
+  
+  75% {
+    @include transform(perspective(500px) rotateX(1deg) rotateY(2deg) rotateZ(0deg));
+  }
+  
+  100% {
+    @include transform(perspective(500px) rotateX(-1deg) rotateY(-4deg) rotateZ(0deg));
+  }
+}
+
+a {
+  color: #d70206;
+  text-decoration: none;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 2em;
+  color: white;
+  padding: 1em;
+  background-color: #d70206;
+  font-size: 1em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+html, body {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+  background-color: $color-background;
+  color: shade($color-background, 60%);
+  text-align: center;
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  line-height: 1;
+}
+
+.tagline {
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+p {
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.container {
+  max-width: 640px;
+  margin: 2em auto;
+  // background-color: shade($color-background, 5%);
+  
+  // @include box-shadow(10px 10px shade($color-background, 10%));
+  // @include animation(teeter, 10s linear infinite);
+  
+  .ct-chart {
+    .ct-label {
+      
+    }
+    
+    .ct-series {
+      &.ct-series-a {
+        .ct-line {
+          stroke-dasharray: 5px;
+          
+          @include animation(dashoffset, 1s linear infinite);
+        }
+        
+        .ct-point {
+          @include animation(bouncing-stroke, 0.6s linear infinite);
+        }
+      }
+      
+      &.ct-series-b {
+        .ct-line {
+          stroke-width: 10px;
+          stroke-dasharray: 15px 5px;
+          
+          @include animation(dashoffset, 2s linear infinite);
+        }
+        
+        .ct-point {
+          @include animation(exploding-stroke, 1.8s linear infinite);
+        }
+      }
+      
+      &.ct-series-c {
+        .ct-line {
+          stroke-width: 2px;
+          stroke-dasharray: 20px 180px;
+          
+          @include animation(pulse, 2s linear infinite);
+        }
+        
+        .ct-point {
+          @include animation(bouncing-stroke, 0.6s linear infinite);
+        }
+      }
+    }
+    
+    .ct-grid {
+      stroke: rgba(0,0,0,.1);
+    }
+  }
+}
+
+::ng-deep .modal-content{
+    width: 800px;
+  }
+  

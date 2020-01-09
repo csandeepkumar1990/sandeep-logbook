@@ -1,0 +1,127 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 18px;
+}
+.logo a{
+  color: brown !important;
+  font-size: 50px;
+  margin-top: -20px;
+}
+// .login-info{
+//   margin: 0px 40px;
+// }
+// nav {
+//   margin: 0px 40px!important;
+// }
+header {
+  border-bottom: 2px solid #a57171b3;
+  min-height: 100px;
+  padding-top: 20px;
+  font-family: 'IBM Plex Mono', monospace;
+  margin: 0px 40px;
+  // padding: 0 20px;
+  position: relative;
+}
+.logo{
+  text-align: center;
+  font-family: 'Kaushan Script', cursive;
+  margin-bottom: 20px;
+}
+.navbar{
+  display: flex;
+  list-style: none;
+  margin: 0;
+  width: 20%; //60
+  padding-left:15px;
+}
+.navbar a{
+  color: #814f4f!important;
+  cursor: pointer;
+  font-weight: bold;
+}
+.navbar a:hover{
+  color: rgb(82, 47, 47)  !important;
+}
+.navbar.login-register {
+  width: 15%;
+  margin-right: 10px;
+}
+.navbar.login-register a {
+  font-size: 13px;
+}
+.navbar.logout {
+  width: 10%;
+  justify-content: flex-end;
+}
+.navbar.logout a {
+  font-size: 15px;
+}
+.seperator {
+  width: 2px;
+  height: 1em;
+  background-color: #814f4f;
+}
+.user-data {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #814f4f;
+}
+.user-data span {
+  font-size: 15px;
+  font-family: "Kaushan Script", cursive;
+}
+.user-data img {
+  margin: 0 10px;
+  border-radius: 50%;
+  width: 50px;
+}
+
+@media screen and (max-width: 900px) {
+  .seperator {
+    display: none;
+  }
+  .navbar.login-register li {
+    margin-bottom: 5px;
+  }
+  .navbar{
+    width: 90%;
+    padding:1px;
+  }
+  .navbar a{
+    font-size: 13px !important;
+  }
+  .navbar.logout a {
+    font-size: 10px;
+  }
+  .navbar.login-register a {
+    font-size: 10px;
+  }
+  .user-data span {
+    font-size: 10px;
+  }
+  .logo a {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .navbar{
+    width: 90%;
+    padding:1px;
+  }
+  .navbar a{
+    font-size: 10px !important;
+  }
+  .navbar.login-register a {
+    font-size: 8px;
+  }
+  .navbar.logout a {
+    font-size: 8px;
+  }
+}

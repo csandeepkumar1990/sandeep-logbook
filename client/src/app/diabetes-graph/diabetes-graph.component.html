@@ -1,0 +1,15 @@
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text">Time</span>
+    </div>
+    <select id="time" class="form-control" (change)="onTimeChange($event.target.value)" [(ngModel)]="time">
+        <option value="DAILY">Daily</option>
+        <option value="WEEKLY">Weekly</option>
+        <option value="MONTHLY">Monthly</option>
+        <option value="YEARLY">Yearly</option>
+    </select>
+</div>
+
+<div class="container">
+    <div id="chartist-chart" class="ct-chart "></div>
+</div>

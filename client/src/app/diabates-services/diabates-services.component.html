@@ -1,0 +1,21 @@
+<div class="tweet-img container shadow-none p-3 mb-5 bg-white rounded">
+  <div class="row">
+    <div class="col-lg-3 col-sm-3">
+      <button routerLink="/services/insulin" (click)="tabClick('insulin')" class="btn-block darkblue"
+        style="outline: none;box-shadow: none !important;">Insulin Dosages</button>
+    </div>
+    <div class="col-lg-3 col-sm-3">
+      <button routerLink="/services/activity" (click)="tabClick('activity')" class="btn btn-block w-100"
+        style="box-shadow: none !important;">Activity Level</button>
+    </div>
+    <div class="col-lg-3 col-sm-3">
+      <button routerLink="/services/carbs" (click)="tabClick('carbs')" class="btn-block turquoise"
+        style="outline: none;box-shadow: none !important;">Carbs Amount</button>
+    </div>
+    <div class="col-lg-3 col-sm-3">
+        <button routerLink="/services/glucose" (click)="tabClick('glucose')" class="btn btn-block w-100"
+          style="outline: none;box-shadow: none !important;background-color:rgb(106, 90, 205);border:rgb(106, 90, 205) !important;" >Glucose Level</button>
+      </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

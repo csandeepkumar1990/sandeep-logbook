@@ -1,0 +1,29 @@
+.cover{
+    height: 50vh;
+}
+.rgba{
+    background: #d49d9d2e;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 8rem;
+    color:  rgb(82, 47, 47);
+    font-family: 'IBM Plex Mono', monospace;
+    line-height: 4;
+}
+
+@media screen and (max-width: 400px) {
+    .rgba{
+        padding-top: 2rem;
+        line-height: 1.5;
+    }
+    h2,h3{
+        font-size: 18px;
+    }
+    p {
+        font-size: 15px;
+        margin-top: 5px;
+    }
+  }
+  

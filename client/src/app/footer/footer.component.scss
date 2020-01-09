@@ -1,0 +1,36 @@
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    // border-top: 2px solid #a57171b3;
+    height: 35px;
+    padding: 0px 0px 0px 0px;
+    // margin: 0px 40px;
+    font-family: 'IBM Plex Mono', monospace;
+    z-index: 11;
+    background: #fff;
+    
+}
+
+address{
+ text-align: right;
+ font-size: 12px;
+ color: rgb(82, 47, 47);
+ border-top: 2px solid #a57171b3;
+ margin: 0px 39px;
+}
+
+footer a , footer a:hover, footer a:active{
+    color: rgb(82, 47, 47) !important;
+}
+
+@media screen and (max-width: 400px) {
+    footer{
+        height: 40px;
+        padding: 5px 20px 0px 0px;
+    }
+    address{
+        font-size: 10px;
+       }
+       
+}

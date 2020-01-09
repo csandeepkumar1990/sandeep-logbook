@@ -1,0 +1,166 @@
+<!-- Glucose form -->
+<section class="signup">
+  <div class="container">
+    <div class="row shadow-none p-3 mb-5 bg-white rounded">
+      <div class="col-2"></div>
+      <div class="col-8">
+        <div class="signup-content text-center">
+          <div class="signup-form w-100">
+            <h2 class="form-title">Glucose Level</h2>
+            <form class="register-form" id="register-form" (ngSubmit)="onSubmit()" [formGroup]="glucoseReactForm"
+              [mustMatch]="['pass', 'repass']" novalidate>
+
+              <div class="form-group">
+                <div class="col-md-12">
+                  <select [ngClass]="{'selectColor': glucoseFormCtrl.glucoseType.value ==''}" class="form-control"
+                    name="glucoseType" id="glucoseType" placeholder="Insulin dosage" formControlName="glucoseType"
+                    name="car">
+                    <option value="" selected="true" class="please-select">Please Select</option>
+                    <option value="1">
+                      Before Meal
+                    </option>
+                    <option value="2">
+                      After Meal
+                    </option>
+                    <option value="3">
+                      Any other time
+                    </option>
+                  </select>
+                </div>
+                <div *ngIf="isSubmitted && glucoseFormCtrl.glucoseType.invalid" class="invalid-feedback">
+                  <div *ngIf="glucoseFormCtrl.glucoseType.errors.required">
+                    Required field
+                  </div>
+                </div>
+               
+              </div>
+
+              <div class="form-group row">
+                <div class="col-4 mt-3">
+                  <label for="time"><i class="zmdi zmdi-time"></i> Time</label>
+                </div>
+                <div class="col-8">
+                  <ngb-timepicker formControlName="glucoseTime" name="glucoseTime"></ngb-timepicker>
+                </div>
+              </div>
+
+              <div class="form-group row">
+
+                <div class="col-8 mt-3">
+                  <input formControlName="glucoseLevelUnits" name="glucoseLevelUnits" required />
+                  
+                  <div *ngIf="isSubmitted && glucoseFormCtrl.glucoseLevelUnits.invalid" class="invalid-feedback">
+                    <div *ngIf="glucoseFormCtrl.glucoseLevelUnits.errors.required">
+                      Required field
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4 mt-3">
+                  <label><i></i> mmol/L</label>
+                </div>
+              </div>
+
+              <div class="form-group form-button">
+                <input type="submit" name="submit" id="submit" class="btn btn-form btn-block" value="Submit"
+                  *ngIf="!formProcess" />
+                <span class="btn btn-block" *ngIf="formProcess">Please wait...</span>
+              </div>
+              <div class="form-group form-button">
+                <input type="button" class="btn btn-form btn-block" value="Generate Chart!" *ngIf="!formProcess"
+                  data-toggle="modal" data-target="#exampleModalScrollable" />
+                <span class="btn btn-block" *ngIf="formProcess">Please wait...</span>
+              </div>
+              <div class="form-group error {{errMsg.class}}">
+                <span>{{errMsg.msg}}</span>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-2">
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+          aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalScrollableTitle">Diabetes Chart</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="form-row">
+                  <div class="col-md-2"></div>
+                  <div class="form-group col-md-4">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Start Date</span>
+                      </div>
+                      <input id="startDate" type="date" placeholder="yyyy-mm-dd" class="form-control"
+                        [(ngModel)]="startDate" (change)="onDateChange($event.target.value)">
+                    </div>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">End Date</span>
+                      </div>
+                      <input id="endDate" type="date" placeholder="yyyy-mm-dd" class="form-control"
+                        [(ngModel)]="endDate" (change)="onDateChange($event.target.value)">
+                    </div>
+                  </div>
+                  <div class="form-group col-md-3">
+
+                  </div>
+
+                </div>
+
+                <div class="container">
+                  <div id="chartist-chart" class="ct-chart "></div>
+                </div>
+
+                <div class="row mb-5 justify-content-center">
+                  <div class="custom-control custom-checkbox">
+                    <input [(ngModel)]="insulinCheck" type="checkbox" class="custom-control-input" id="insulinCheck"
+                      (change)="onChecked($event.target.checked,'INSULIN')">
+                    <label class="custom-control-label" for="insulinCheck">Insulin</label>
+                  </div>
+                  <div class="custom-control custom-checkbox ml-3">
+                    <input [(ngModel)]="activityCheck" type="checkbox" class="custom-control-input" id="activityCheck"
+                      (change)="onChecked($event.target.checked,'ACTIVITY')">
+                    <label class="custom-control-label" for="activityCheck">Activity</label>
+                  </div>
+                  <div class="custom-control custom-checkbox ml-3">
+                    <input [(ngModel)]="carbsCheck" type="checkbox" class="custom-control-input" id="carbsCheck"
+                      (change)="onChecked($event.target.checked,'CARBS')">
+                    <label class="custom-control-label" for="carbsCheck">Carbs</label>
+                  </div>
+                  <div class="custom-control custom-checkbox ml-3">
+                    <input [(ngModel)]="glucoseCheck" type="checkbox" class="custom-control-input" id="glucoseCheck"
+                      (change)="onChecked($event.target.checked,'Glucose')">
+                    <label class="custom-control-label" for="glucoseCheck">Glucose</label>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                  <button type="button" class="btn btn-form btn-block ml-auto"
+                    style="width: 100%; box-shadow: none !important;outline: none;" (click)="generateHistoricalCSV()">Historical
+                    CSV</button>
+                </div>
+                <div class="col-md-4">
+                  <button type="button" class="btn btn-form btn-block ml-auto"
+                    style="width: 100%; box-shadow: none !important;outline: none;" (click)="generateCSV()">Download
+                    CSV</button>
+                </div>
+                <div class="col-md-2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

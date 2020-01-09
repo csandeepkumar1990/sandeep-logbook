@@ -1,0 +1,191 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'assets/fonts/material-icon/css/material-design-iconic-font.min.css';
+@import 'scss/style.scss';
+@import '../node_modules/bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/bootstrap-grid';
+
+@import '../node_modules/chartist/dist/scss/chartist.scss';
+
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+      @content;
+    }
+    @-moz-keyframes #{$name} {
+      @content;
+    }
+    @-ms-keyframes #{$name} {
+      @content;
+    }
+    @keyframes #{$name} {
+      @content;
+    }
+  }
+  
+  @mixin animation($name, $params) {
+    -webkit-animation: #{$name} $params; /* Safari 4+ */
+    -moz-animation: #{$name} $params; /* Fx 5+ */
+    -o-animation: #{$name} $params; /* Opera 12+ */
+    animation: #{$name} $params; /* IE 10+ */
+  }
+  
+  //@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300);
+  
+  $color-background: white;
+  
+  @include keyframes(dashoffset) {
+    0% {
+      stroke-dashoffset: 0px;
+    }
+  
+    100% {
+      stroke-dashoffset: -20px;
+    }
+  }
+  
+  @include keyframes(pulse) {
+    0% {
+      stroke-dashoffset: 0px;
+    }
+  
+    100% {
+      stroke-dashoffset: -1000px;
+    }
+  }
+  
+  @include keyframes(bouncing-stroke) {
+    0% {
+      stroke-width: 10px;
+    }
+  
+    50% {
+      stroke-width: 15px;
+    }
+  
+    100% {
+      stroke-width: 10px;
+    }
+  }
+  
+  @include keyframes(exploding-stroke) {
+    0% {
+      stroke-width: 2px;
+      opacity: 1;
+    }
+  
+    100% {
+      stroke-width: 40px;
+      opacity: 0;
+    }
+  }
+  
+  @include keyframes(teeter) {
+    0% {
+      @include transform(perspective(500px) rotateX(-1deg) rotateY(-4deg) rotateZ(0deg));
+    }
+    
+    25% {
+      @include transform(perspective(500px) rotateX(1deg) rotateY(2deg) rotateZ(0deg));
+    }
+  
+    50% {
+      @include transform(perspective(500px) rotateX(3deg) rotateY(4deg) rotateZ(0deg));
+    }
+    
+    75% {
+      @include transform(perspective(500px) rotateX(1deg) rotateY(2deg) rotateZ(0deg));
+    }
+    
+    100% {
+      @include transform(perspective(500px) rotateX(-1deg) rotateY(-4deg) rotateZ(0deg));
+    }
+  }
+  
+  
+  
+  .container {
+    
+    .ct-chart {
+      .ct-label {
+        
+      }
+      
+      .ct-series {
+        &.ct-series-a {
+          .ct-line {
+            stroke-dasharray: 5px;
+            
+            @include animation(dashoffset, 1s linear infinite);
+          }
+          
+          .ct-point {
+            @include animation(bouncing-stroke, 0.6s linear infinite);
+          }
+        }
+        
+        &.ct-series-b {
+          .ct-line {
+            stroke-width: 10px;
+            stroke-dasharray: 15px 5px;
+            
+            @include animation(dashoffset, 2s linear infinite);
+          }
+          
+          .ct-point {
+            @include animation(exploding-stroke, 1.8s linear infinite);
+          }
+        }
+        
+        &.ct-series-c {
+          .ct-line {
+            stroke-width: 2px;
+            stroke-dasharray: 20px 180px;
+            
+            @include animation(pulse, 2s linear infinite);
+          }
+          
+          .ct-point {
+            @include animation(bouncing-stroke, 0.6s linear infinite);
+          }
+        }
+
+        &.ct-series-d {
+            .ct-line {
+              stroke-width: 2px;
+              stroke-dasharray: 20px 180px;
+              
+              @include animation(pulse, 2s linear infinite);
+            }
+            
+            .ct-point {
+              @include animation(bouncing-stroke, 0.6s linear infinite);
+            }
+          }
+      }
+      
+      .ct-grid {
+        stroke: rgba(0,0,0,.1);
+      }
+    }
+  }
+  
+
+//Glucose
+.ct-series-a .ct-line, .ct-series-a .ct-point {
+  stroke: brown !important;
+}
+
+//Insulin
+.ct-series-b .ct-point {
+  stroke: red !important;
+}
+
+//Activity
+.ct-series-c .ct-point {
+  stroke: #008000 !important;;
+}
+
+//Carbs
+.ct-series-d .ct-point {
+  stroke: #ffdb58 !important;;
+}
